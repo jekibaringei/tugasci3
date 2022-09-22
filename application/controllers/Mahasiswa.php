@@ -12,7 +12,7 @@
             $this->form_validation->set_rules('sks','sks','required');
             $this->form_validation->set_rules('semester','semester','required');
             $this->form_validation->set_rules('jurusan','jurusan','required');
-            if($this->form_validation->run()==false){
+            if($this->form_validation->run()== False){
                 $this->load->view('templates/header',$data);
                 $this->load->view('mahasiswa/index',$data);
                 $this->load->view('templates/footer'); 
@@ -28,5 +28,10 @@
                 redirect('mahasiswa');
             }
         }
+        public function ubah($id = null)
+        {
+            $this->Mahasiswa_model->ubahDataMahasiswa($id);
+            redirect('mahasiswa');
+        }
     }
-?>
+    ?>

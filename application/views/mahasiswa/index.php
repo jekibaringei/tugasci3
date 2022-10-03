@@ -1,10 +1,48 @@
 <div class="container">
     <div class="row mt-5">
         <div class="col mt-4">
+
+        <!-- Awal validasi error -->
+        <?php if(validation_errors()): ?>
+          <div class="alert alert-danger" role="alert">
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <?= validation_errors(); ?>
+          </div>
+          <?php endif; ?>
+        <!-- Ahkir validasi error -->
             <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Insert Data
+<i class="fa-solid fa-plus"></i>
 </button>
+<div class="row mt">
+  <div class="col-md-8">
+
+<!-- Awal flashdata -->
+<?php if($this->session->flashdata('flash')): ?>
+  <div class="row mt-3">
+    <div class="col md-8">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">Data Mahasiswa
+  <strong>Berhasil</strong><?= $this->session->flashdata('flash'); ?>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+    </div>
+  </div>
+  <?php endif; ?>
+<!-- Akhir flashdata -->
+
+<div class="row mt-3">
+  <div class="col mt-6">
+    <form action="" method="post">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Type what you want to search." name="keyword">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -19,22 +57,33 @@
         <div class="form group">
             <label for="kode">Code</label>
             <input type="numeric" name="kode" class="form-control" id="kode" placeholder="Insert a new code" >
+            <small class="form-text text-danger"><?= form_error('kode'); ?></small>
         </div>
         <div class="form group">
             <label for="matakuliah">Learning Subject</label>
             <input type="text" name="matakuliah" class="form-control" id="matakuliah" placeholder="Insert a learning subject" >
+            <small class="form-text text-danger"><?= form_error('matakuliah'); ?></small>
         </div>
         <div class="form group">
             <label for="sks">SKS</label>
             <input type="numeric" name="sks" class="form-control" id="sks" placeholder="Insert sks" >
+            <small class="form-text text-danger"><?= form_error('sks'); ?></small>
         </div>
         <div class="form group">
             <label for="semester">Semester</label>
             <input type="numeric" name="semester" class="form-control" id="semester" placeholder="Insert semester" >
+            <small class="form-text text-danger"><?= form_error('semester'); ?></small>
         </div>
         <div class="form group">
             <label for="jurusan">Major</label>
-            <input type="text" name="jurusan" class="form-control" id="jurusan" placeholder="Insert a new major" >
+            <select class="form-select" id="jurusan" name="jurusan">
+              <option value="">Click here.</option>
+              <?php foreach($jurusan as $j): ?>
+              <option><?= $j['namajurusan']; ?></option>
+              <?php endforeach; ?>
+            </select>
+            <small class="form-text text-danger"><?= form_error('jurusan'); ?></small>
+            <!-- <input type="text" name="jurusan" class="form-control" id="jurusan" placeholder="Insert a new major" > -->
         </div>
       </div>
       <div class="modal-footer">
@@ -68,9 +117,9 @@
       <td><?=$mhs['jurusan']; ?></td>
       <td>
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal<?= $mhs['id']; ?>">
-  Edit
+      <i class="fa-solid fa-pen"></i>
 </button>
-        <a href="<?php base_url()?>mahasiswa/hapus/<?=$mhs['id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure?'); ">Delete</a>
+        <a href="<?php base_url()?>mahasiswa/hapus/<?=$mhs['id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure?'); "><i class="fa-solid fa-trash-can"></i></a>
       </td>
     </tr>
     <?php endforeach; ?>
@@ -94,7 +143,7 @@
         <input type="hidden" name="id" value="<?= $mhs['id']; ?>">
         <div class="form group">
             <label for="kode">Code</label>
-            <input type="numeric" name="kode" class="form-control" value="<?= $mhs['kode']; ?>" id="kode" placeholder="Insert a new code" >
+            <input type="numeric" name="kode" class="form-control" value="<?= $mhs['kode']; ?>" id="kode" placeholder="Insert a new code" readonly >
         </div>
         <div class="form group">
             <label for="matakuliah">Learning Subject</label>
@@ -110,7 +159,13 @@
         </div>
         <div class="form group">
             <label for="jurusan">Major</label>
-            <input type="text" name="jurusan" class="form-control" value="<?= $mhs['jurusan']; ?>" id="jurusan" placeholder="Insert a new major" >
+            <select class="form-select" id="jurusan" name="jurusan">
+              <option value="">Click here.</option>
+              <?php foreach($jurusan as $j): ?>
+              <option><?= $j['namajurusan']; ?></option>
+              <?php endforeach; ?>
+            </select>
+            <!-- <input type="text" name="jurusan" class="form-control" value="<?= $mhs['jurusan']; ?>" id="jurusan" placeholder="Insert a new major" > -->
         </div>
       </div>
       <div class="modal-footer">

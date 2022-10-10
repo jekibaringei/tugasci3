@@ -10,7 +10,7 @@
   <body>
   <nav class="navbar fixed-top navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="#">University</a>
+    <a class="navbar-brand" href="<?= base_url('beranda')?>">University</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

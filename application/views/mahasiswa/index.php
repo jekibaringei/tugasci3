@@ -1,15 +1,6 @@
 <div class="container">
     <div class="row mt-5">
         <div class="col mt-4">
-
-        <!-- Awal validasi error -->
-        <?php if(validation_errors()): ?>
-          <div class="alert alert-danger" role="alert">
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            <?= validation_errors(); ?>
-          </div>
-          <?php endif; ?>
-        <!-- Ahkir validasi error -->
             <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
 <i class="fa-solid fa-plus"></i>

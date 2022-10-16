@@ -12,8 +12,7 @@
 <?php if($this->session->flashdata('flash')): ?>
   <div class="row mt-3">
     <div class="col md-8">
-    <div class="alert alert-success alert-dismissible fade show" role="alert">Data Mahasiswa
-  <strong>Berhasil</strong><?= $this->session->flashdata('flash'); ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">Student data has been<?= $this->session->flashdata('flash'); ?>
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 
@@ -68,7 +67,7 @@
         <div class="form group">
             <label for="jurusan">Major</label>
             <select class="form-select" id="jurusan" name="jurusan">
-              <option value="">Click here.</option>
+              <option value="">Choose Major</option>
               <?php foreach($jurusan as $j): ?>
               <option><?= $j['namajurusan']; ?></option>
               <?php endforeach; ?>
@@ -86,7 +85,7 @@
   </div>
 </div>
 <!-- Akhir Modal -->
-<!-- Tabel Data -->
+<!-- Tabel Data Hover -->
         <table class="table table-hover">
   <thead>
     <tr>

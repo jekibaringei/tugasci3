@@ -19,7 +19,7 @@
         <a class="nav-link active" aria-current="page" href="<?= base_url('beranda'); ?>">Home</a>
         <a class="nav-link" href="<?= base_url('mahasiswa'); ?>">Students</a>
         <a class="nav-link" href="<?= base_url('dosen')?>">Lectures</a>
-        <a class="nav-link" href="<?= base_url('admin/login') ?>">Login</a>
+        <a class="nav-link" href="<?= base_url('auth/logout') ?>">Log out</a>
       </div>
     </div>
   </div>
